@@ -28,7 +28,7 @@ class Record:
     def add_phone(self, phone: Phone):
         self.phones.append(phone)
 
-    def change_phone(self, old_phone: Phone, new_phone: Phone):
+    def edit_phone(self, old_phone: Phone, new_phone: Phone):
         self.remove_phone(old_phone)
         self.add_phone(new_phone)
 
@@ -96,7 +96,7 @@ for name, record in book.data.items():
 
 # Знаходження та редагування телефону для John
 john = book.find(john)
-john.change_phone(Phone("1112223333"), Phone('11122233333'))
+john.edit_phone(Phone("1112223333"), Phone('11122233333'))
 
 print(john)  # Виведення: Contact name: John, phones: 1112223333; 5555555555
 
