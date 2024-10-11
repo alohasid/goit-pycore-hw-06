@@ -20,10 +20,13 @@ class Record:
 
 
     def remove_phone(self, phone: Phone):
-        try:
-            self.phones.remove(phone)
-        except ValueError:
+        found_phone = self.find_phone(phone)
+        if found_phone:
+            self.phones.remove(found_phone)
+            print(f"Phone {phone} removed from record {self.name}.\n")
+        else:
             print(f"Phone {phone} not found in record {self.name}.")
+            
 
     def add_phone(self, phone: Phone):
         self.phones.append(phone)
@@ -103,6 +106,12 @@ print(john)  # Виведення: Contact name: John, phones: 1112223333; 55555
 # Пошук конкретного телефону у записі John
 found_phone = john.find_phone(Phone('5555555555'))
 print(f"{john.name}: {found_phone}")  # Виведення: 5555555555
+
+
+john_record = Record(john)
+john_record.add_phone(Phone('1234567890'))
+john_record.add_phone(Phone('5555555555'))
+john_record.remove_phone(Phone('5555555555'))
 
 # Видалення запису Jane
 book.delete(jane)
